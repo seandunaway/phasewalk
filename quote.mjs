@@ -90,7 +90,7 @@ function rand(min = 0, max = 100) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-function rand_distribution(min = 0, max = 100, total = 100) {
+function rand_distribution(min = 0, max = 100, total = 50) {
     let sum = 0
     for (let i = 1; i <= total; i++) {
         sum += rand(min, max)
