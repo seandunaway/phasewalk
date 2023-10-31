@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-let MIN_PHASE_DURATION = 0
-let MAX_PHASE_DURATIONS = [60, 600, 1200]
+let MIN_PHASE_DURATION = 10
+let MAX_PHASE_DURATIONS = [10] // [60, 600, 1200]
 
-let MIN_QUOTE_DELAY = 0
-let MAX_QUOTE_DELAYS = [100, 250, 500]
+let MIN_QUOTE_DELAY = 10
+let MAX_QUOTE_DELAYS = [10] // [100, 250, 500]
 
 let phase = {
     i: 0,
@@ -16,12 +16,13 @@ let phase = {
     rs: 0,
 }
 
-
+let sum = 0
 while (true) {
     if (phase.next) {
         if (phase.stats) {
             console.error('\n', phase.stats, '\n')
             delete phase.stats
+            break
         }
 
         phase.i++
@@ -47,7 +48,7 @@ while (true) {
         if (!coinflip(phase.rs))
             next_tick++
 
-    // is there a hit by an initiative seller?
+    // is there a hit by an initiative seller?gi
     if (coinflip(phase.is))
         // is it not held by a responsive buyer?
         if (!coinflip(phase.rb))
@@ -64,7 +65,8 @@ while (true) {
 
     if (!phase.stats) phase.stats = {'-': 0, '.': 0, '+': 0}
     phase.stats[output]++
-    process.stdout.write(output)
+    sum += next_tick
+    process.stdout.write(sum + ',')
 
     next_tick = 0
 
