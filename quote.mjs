@@ -20,7 +20,7 @@ let phase = {
 while (true) {
     if (phase.next) {
         if (phase.stats) {
-            console.info('\n', phase.stats, '\n')
+            console.error('\n', phase.stats, '\n')
             delete phase.stats
         }
 
@@ -35,7 +35,7 @@ while (true) {
         phase.is = rand_distribution()
         phase.rs = rand_distribution()
 
-        console.info(phase)
+        console.error(phase)
     }
 
 
