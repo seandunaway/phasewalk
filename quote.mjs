@@ -43,7 +43,8 @@ while (true) {
      * @fix
      * buyer or seller first? random? does it matter?
      * is this even semi-accurate?
-     * normal distribute?
+     * normal distribute? skinny/fat
+     * randomly step to next phase
     */
 
     let next_tick = 0
