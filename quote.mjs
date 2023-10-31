@@ -95,7 +95,7 @@ function rand_distribution(min = 0, max = 100, total = 100) {
     for (let i = 1; i <= total; i++) {
         sum += rand(min, max)
     }
-    return sum / total
+    return Math.round(sum / total)
 }
 
 function random_array_value(array) {
