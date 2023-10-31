@@ -30,10 +30,10 @@ while (true) {
         phase.timeout = rand(MIN_PHASE_DURATION, random_array_value(MAX_PHASE_DURATIONS))
         setTimeout(function () {phase.next = true}, phase.timeout * 1000)
 
-        phase.rb = rand()
-        phase.ib = rand()
-        phase.is = rand()
-        phase.rs = rand()
+        phase.rb = rand_distribution()
+        phase.ib = rand_distribution()
+        phase.is = rand_distribution()
+        phase.rs = rand_distribution()
 
         console.info(phase)
     }
@@ -88,6 +88,14 @@ function coinflip(probability = 50) {
 
 function rand(min = 0, max = 100) {
     return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function rand_distribution(min = 0, max = 100, total = 100) {
+    let sum = 0
+    for (let i = 1; i <= total; i++) {
+        sum += rand(min, max)
+    }
+    return sum / total
 }
 
 function random_array_value(array) {
